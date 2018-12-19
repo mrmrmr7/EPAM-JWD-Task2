@@ -20,6 +20,7 @@ public class Controller {
 		if (!isValidSphere(sphere)) {
 			throw new CONTROLLERNotValidSphereException();
 		}
+		
 		try {			
 			service.pushSphere(sphere);
 		} catch (SERVICEImpossibleToAddException e) {
@@ -36,6 +37,16 @@ public class Controller {
 	}
 
 	public Sphere getSphereById(int ID) {
+		Sphere sphere = null;
+		try {
+			sphere = new Sphere(service.getSphereById(ID));
+		} catch (Exception e) {
+			
+		}
+		return sphere;
+	}
+	
+	public Sphere getSphereForChangeById(int ID) {
 		Sphere sphere = null;
 		try {
 			sphere = service.getSphereById(ID);

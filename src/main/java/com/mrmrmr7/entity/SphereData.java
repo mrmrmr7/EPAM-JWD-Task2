@@ -8,6 +8,7 @@ public class SphereData {
 	
 	public SphereData(Sphere sphere) {
 		this.sphere = sphere;
+		calculateProperties();
 	}
 	
 	public Sphere getSphere() {
@@ -15,15 +16,31 @@ public class SphereData {
 	}
 	
 	public void calculateProperties() {
-		surfaceArea = 0;
-		volume = 0;
+		setSurfaceArea(calculateVolume());
+		setVolume(calculateSurfaceArea());
 	}
 	
-	private void calculateVolume() {
-		
+	public double calculateVolume() {
+		return Math.pow(sphere.getRadius() , 3.) * Math.PI * 4. / 3.;
 	}
 	
-	private void calculateSurfaceArea() {
-		
+	public double calculateSurfaceArea() {
+		return Math.pow(sphere.getRadius() , 2.) * Math.PI * 4.;
+	}
+
+	public double getSurfaceArea() {
+		return surfaceArea;
+	}
+
+	public void setSurfaceArea(double surfaceArea) {
+		this.surfaceArea = surfaceArea;
+	}
+
+	public double getVolume() {
+		return volume;
+	}
+
+	public void setVolume(double volume) {
+		this.volume = volume;
 	}
 }

@@ -1,6 +1,6 @@
 package com.mrmrmr7.entity;
 
-public class Sphere {
+public class Sphere extends Figure {
 	private Point center;
 	private double radius;	
 	private final int id;
@@ -13,13 +13,19 @@ public class Sphere {
 		Sphere.last_id++;
 	}
 	
-	public Sphere(double x, double y, double radius) {
-		this.center = new Point(x,y);
+	public Sphere(double radius, double x, double y, double z) {
+		center = new Point(x,y,z);
 		this.radius = radius;
 		this.id = Sphere.last_id;
 		Sphere.last_id++;
 	}
 	
+	public Sphere(Sphere sphereById) {
+		this.center = sphereById.getCenter();
+		this.radius = sphereById.getRadius();
+		this.id = Sphere.last_id;
+	}
+
 	public double getRadius() {
 		return radius;
 	}

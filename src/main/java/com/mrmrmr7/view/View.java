@@ -23,13 +23,18 @@ public class View {
 		}
 	}
 	
-	public Sphere getById(final int ID) {
+	public Sphere get(final int ID) {
 		Sphere sphere = null;
 		try {
-			sphere = controller.getSphereById(ID);
+			sphere = new Sphere(controller.getSphereById(ID));
 		} catch (Exception e) {
+			//TODO !!
 			sphere = null;
 		}
 		return sphere;
+	}
+	
+	public Sphere change(final int ID) {
+		return controller.getSphereForChangeById(ID);
 	}
 }
